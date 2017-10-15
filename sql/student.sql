@@ -1,0 +1,12 @@
+USE daily;
+
+CREATE TABLE student_(
+	id BIGINT UNSIGNED NOT NULL COMMENT '学号',
+	name VARCHAR(10) NOT NULL COMMENT '姓名',
+	sex TINYINT UNSIGNED COMMENT '性别',
+	tel BIGINT UNSIGNED COMMENT '手机号',
+	email VARCHAR(32) COMMENT '邮箱',
+	PRIMARY KEY pk_id(id),
+	INDEX idx_name(name),
+	INDEX idx_sex(sex)
+)ENGINE=InnoDB DEFAULT CHARSET=UTF8 COMMENT '学生表';
