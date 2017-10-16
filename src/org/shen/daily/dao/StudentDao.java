@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.shen.daily.exception.StudentException;
 import org.shen.daily.model.Page;
 import org.shen.daily.model.Student;
 import org.shen.daily.util.DBUtil;
@@ -274,6 +275,7 @@ public class StudentDao {
 			ps.setString(5, student.getEmail());
 			
 			ps.execute();
+
 		} catch (SQLException e) {
 			throw e;
 		}finally {
@@ -284,6 +286,94 @@ public class StudentDao {
 				ps.close();
 			}
 		}
+	}
+	
+	/**
+	 * 删除指定学生信息
+	 * @param id
+	 * @throws StudentException
+	 * @throws SQLException
+	 */
+	public void delete(long id) throws SQLException {
+		
+		String sql="DELETE FROM student_ WHERE id=?";
+		
+		try {
+			ps=connection.prepareStatement(sql);
+			
+			ps.setLong(1, id);
+			
+			ps.execute();
+		} catch (SQLException e) {
+			throw e;
+		} finally {
+			if(rs!=null) {
+				rs.close();
+			}
+			if(ps!=null) {
+				ps.close();
+			}
+		}
+	}
+	
+	public void update(Student student) throws SQLException{
+		
+		StringBuilder preSql=new StringBuilder("UPDATE student_ SET ");
+		
+		//顺序存放sql参数
+		List<Object> paramList=new ArrayList<>();
+		
+		if(student.getName()!=null) {
+			preSql.append("name=?,");
+			paramList.add(student.getName());
+		}
+		if(student.getSex()!=null) {
+			preSql.append("sex=?,");
+			paramList.add(student.getSex());
+		}
+		if(student.getTel()!=null) {
+			preSql.append("tel=?,");
+			paramList.add(student.getTel());
+		}
+		if(student.getEmail()!=null) {
+			preSql.append("email=?,");
+			paramList.add(student.getEmail());
+		}
+		
+		String sql=preSql.toString();
+		
+		if(sql.endsWith(",")) {
+			sql=sql.substring(0, sql.length()-1);
+		}
+		
+		sql=sql+" WHERE id=?";
+
+		try {
+			ps=connection.prepareStatement(sql);
+			
+			int i;
+			
+			//将参数顺序放入preparedStatement
+			for (i = 0; i < paramList.size(); i++) {
+				ps.setObject(i+1, paramList.get(i));
+			}
+			
+			ps.setLong(++i, student.getId());
+			
+			ps.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			throw e;
+		} finally {
+			if(rs!=null) {
+				rs.close();
+			}
+			if(ps!=null) {
+				ps.close();
+			}
+		}
+		
 	}
 	
 }

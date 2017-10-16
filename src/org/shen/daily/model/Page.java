@@ -43,6 +43,15 @@ public class Page<T>{
 		this.pageSize = pageSize;
 		this.totalNum = totalNum;
 		this.pageNum=totalNum%pageSize==0?totalNum/pageSize:totalNum/pageSize+1;
+		if(this.pageNum<1) {
+			this.pageNum=1;
+		}
+		
+		if(currentPage>this.pageNum) {
+			this.currentPage=this.pageNum;
+		}else if(currentPage<1) {
+			this.currentPage=1;
+		}
 		this.list = list;
 	}
 

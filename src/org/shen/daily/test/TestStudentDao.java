@@ -2,6 +2,7 @@ package org.shen.daily.test;
 
 import java.sql.SQLException;
 
+import org.junit.Test;
 import org.shen.daily.dao.StudentDao;
 import org.shen.daily.model.Page;
 import org.shen.daily.model.Student;
@@ -14,7 +15,7 @@ import org.shen.daily.model.Student;
 public class TestStudentDao {
 	private StudentDao studentDao=new StudentDao();
 	
-	@org.junit.Test
+	@Test
 	public void tsetList() {
 		try {
 			Page<Student> page=studentDao.list(21, 5);
@@ -25,7 +26,7 @@ public class TestStudentDao {
 		}
 	}
 	
-	@org.junit.Test
+	@Test
 	public void testSearch() {
 		Student searchModel=new Student();
 		searchModel.setName("–’√˚111");
@@ -38,7 +39,7 @@ public class TestStudentDao {
 		}
 	}
 	
-	@org.junit.Test
+	@Test
 	public void testGet() {
 		Student student;
 		try {
@@ -48,6 +49,29 @@ public class TestStudentDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+	}
+	
+	@Test
+	public void testAdd() {
+		Student student=new Student(2016220305024L, "…Í÷æ«ø", (byte)1, 18581517585L, "1422537078@qq.cpm");
+		try {
+			studentDao.add(student);
+		}  catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testUpdate() {
+		Student student=new Student();
+		student.setId(2016220305024L);
+		student.setName("XXX");
+		try {
+			studentDao.update(student);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
