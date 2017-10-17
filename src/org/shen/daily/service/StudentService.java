@@ -35,6 +35,9 @@ public class StudentService {
 			}else {
 				try {
 					currentPage=Integer.valueOf(currentPageParam);
+					if(currentPage<Constant.DEFAULT_CURRENT_PAGE) {
+						currentPage=Constant.DEFAULT_CURRENT_PAGE;
+					}
 				} catch (NumberFormatException e) {
 					currentPage=Constant.DEFAULT_CURRENT_PAGE;
 				}
@@ -44,6 +47,9 @@ public class StudentService {
 			}else {
 				try {
 					pageSize=Integer.valueOf(pageSizeParam);
+					if(pageSize<1) {
+						pageSize=Constant.DEFAULT_PAGE_SIZE;
+					}
 				} catch (NumberFormatException e) {
 					pageSize=Constant.DEFAULT_PAGE_SIZE;
 				}
@@ -70,6 +76,9 @@ public class StudentService {
 			}else {
 				try {
 					currentPage=Integer.valueOf(currentPageParam);
+					if(currentPage<Constant.DEFAULT_CURRENT_PAGE) {
+						currentPage=Constant.DEFAULT_CURRENT_PAGE;
+					}
 				} catch (NumberFormatException e) {
 					currentPage=Constant.DEFAULT_CURRENT_PAGE;
 				}
@@ -79,6 +88,9 @@ public class StudentService {
 			}else {
 				try {
 					pageSize=Integer.valueOf(pageSizeParam);
+					if(pageSize<1) {
+						pageSize=Constant.DEFAULT_PAGE_SIZE;
+					}
 				} catch (NumberFormatException e) {
 					pageSize=Constant.DEFAULT_PAGE_SIZE;
 				}

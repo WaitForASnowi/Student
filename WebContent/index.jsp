@@ -14,7 +14,7 @@
 <script type="text/javascript">
 	$(function(){
 		$("#button").click(function(){
-			location.href="<%=basePath%>/student";
+			location.href="<%=basePath%>/students";
 		});
 	})
 </script>

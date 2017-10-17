@@ -22,7 +22,7 @@ public class TestUtil {
 		for (int i = 1; i < 100; i++) {
 			long id=(long)(i);
 			String name="ÐÕÃû"+i;
-			byte sex=(byte) (i);
+			byte sex=(byte) (i%2==0?1:0);
 			long tel=(long) (i);
 			String email="ÓÊÏä"+i;
 			
