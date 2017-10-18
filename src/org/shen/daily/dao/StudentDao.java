@@ -23,6 +23,9 @@ public class StudentDao {
 	private PreparedStatement ps;
 	private ResultSet rs;
 	
+	public StudentDao() {
+		this.connection=DBUtil.getConnection();
+	}
 	
 	/**
 	 * 分页查询学生列表
@@ -43,7 +46,6 @@ public class StudentDao {
 		String countSql="SELECT COUNT(id) FROM student_";
 		//查询指定页对应的学生列表
 		try {
-			connection=DBUtil.getConnection();
 			ps=connection.prepareStatement(sql);
 			ps.setInt(1, begin);
 			ps.setInt(2, pageSize);
@@ -90,9 +92,6 @@ public class StudentDao {
 			}
 			if(ps!=null) {
 				ps.close();
-			}
-			if(connection!=null) {
-				connection.close();
 			}
 		}
 		
@@ -156,11 +155,6 @@ public class StudentDao {
 		
 		sql.append(" ORDER BY id LIMIT ?,?");
 		
-		try {
-			connection=DBUtil.getConnection();
-		} catch (SQLException e) {
-			throw e;
-		}	
 		
 		//搜索指定页对应学生
 		ps=connection.prepareStatement(sql.toString());
@@ -193,9 +187,6 @@ public class StudentDao {
 			if(ps!=null) {
 				ps.close();
 			}
-			if(connection!=null) {
-				connection.close();
-			}
 		}
 		
 		//查询满足条件的记录总数
@@ -221,9 +212,6 @@ public class StudentDao {
 			if(ps!=null) {
 				ps.close();
 			}
-			if(connection!=null) {
-				connection.close();
-			}
 		}
 		
 		Page<Student> page=new Page<>(currentPage, pageSize, totalNum, students);
@@ -243,7 +231,6 @@ public class StudentDao {
 		
 		String sql="SELECT id,name,sex,tel,email FROM student_ WHERE id=?";
 		try {
-			connection=DBUtil.getConnection();
 			
 			ps=connection.prepareStatement(sql);
 			ps.setLong(1, id);
@@ -265,9 +252,6 @@ public class StudentDao {
 			if(ps!=null) {
 				ps.close();
 			}
-			if(connection!=null) {
-				connection.close();
-			}
 		}
 		
 		return student;
@@ -281,7 +265,6 @@ public class StudentDao {
 	public void add(Student student) throws SQLException{
 		String sql="INSERT student_ (id,name,sex,tel,email) VALUES (?,?,?,?,?)";
 		try {
-			connection=DBUtil.getConnection();
 			
 			ps=connection.prepareStatement(sql);
 			
@@ -302,9 +285,6 @@ public class StudentDao {
 			if(ps!=null) {
 				ps.close();
 			}
-			if(connection!=null) {
-				connection.close();
-			}
 		}
 	}
 	
@@ -318,7 +298,6 @@ public class StudentDao {
 		
 		String sql="DELETE FROM student_ WHERE id=?";
 		try {
-			connection=DBUtil.getConnection();
 			
 			ps=connection.prepareStatement(sql);
 			
@@ -333,9 +312,6 @@ public class StudentDao {
 			}
 			if(ps!=null) {
 				ps.close();
-			}
-			if(connection!=null) {
-				connection.close();
 			}
 		}
 	}
@@ -374,7 +350,6 @@ public class StudentDao {
 		
 		
 		try {
-			connection=DBUtil.getConnection();
 			
 			ps=connection.prepareStatement(sql);
 			
@@ -398,9 +373,6 @@ public class StudentDao {
 			}
 			if(ps!=null) {
 				ps.close();
-			}
-			if(connection!=null) {
-				connection.close();
 			}
 		}
 		

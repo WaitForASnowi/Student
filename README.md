@@ -16,3 +16,5 @@ add StudentServlet and new.jsp
 transfer doPost to doPut or doDelete when request for doPost and doPut
 
 test and debug
+
+add c3p0 dataSource
