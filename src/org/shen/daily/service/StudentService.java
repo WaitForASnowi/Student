@@ -98,7 +98,7 @@ public class StudentService {
 			
 			Student searchModel =null;
 			try {
-				searchModel=StudentUtil.bindParam(idParam, nameParam, sexParam, telParam, emailParam);
+				searchModel=StudentUtil.bindParamForSearch(idParam, nameParam, sexParam, telParam, emailParam);
 			} catch (TypeNotMatchException e) {
 				throw e;
 			}

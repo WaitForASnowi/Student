@@ -11,3 +11,8 @@ add some test for component like dao service and util
 
 add listServlet detail.jsp
 
+add StudentServlet and new.jsp
+
+transfer doPost to doPut or doDelete when request for doPost and doPut
+
+test and debug

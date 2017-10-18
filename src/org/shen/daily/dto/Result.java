@@ -17,6 +17,12 @@ public class Result<T>{
 		this.message = message;
 	}
 	
+	public Result(Boolean success, String message) {
+		super();
+		this.success = success;
+		this.message = message;
+	}
+
 	public Result(Boolean success, T data) {
 		super();
 		this.success = success;
@@ -53,6 +59,11 @@ public class Result<T>{
 	}
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	@Override
+	public String toString() {
+		return "Result [success=" + success + ", code=" + code + ", data=" + data + ", message=" + message + "]";
 	}
 	
 }

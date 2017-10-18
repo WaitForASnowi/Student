@@ -159,7 +159,6 @@ public class StudentDao {
 		//搜索指定页对应学生
 		ps=connection.prepareStatement(sql.toString());
 		try {
-			
 			int i;
 			for (i = 0; i < paramList.size(); i++) {
 				ps.setObject(i+1, "%"+paramList.get(i)+"%");
@@ -195,7 +194,7 @@ public class StudentDao {
 		try {
 			int i;
 			for (i = 0; i < paramList.size(); i++) {
-				ps.setObject(i+1, paramList.get(i));
+				ps.setObject(i+1, "%"+paramList.get(i)+"%");
 			}
 			
 			rs=ps.executeQuery();

@@ -142,4 +142,78 @@ public class StudentUtil {
 		return student;
 		
 	}
+	
+	/**
+	 * 绑定参数到pojo中
+	 * 如果不满足正则表达式则抛出异常
+	 * 如果格式转换失败则抛出异常
+	 * @param idParam
+	 * @param nameParam
+	 * @param sexParam
+	 * @param telParam
+	 * @param emailParam
+	 * @return
+	 * @throws TypeNotMatchException
+	 */
+	public static Student bindParamForSearch(String idParam,
+			String nameParam,String sexParam,
+			String telParam,String emailParam) throws TypeNotMatchException{
+		
+		Student student=new Student();
+		
+		if(idParam!=null&&!idParam.equals("")) {
+			try {
+				if(!Pattern.matches(Constant.SEARCH_ID_REGEX, idParam)) {
+					throw new TypeNotMatchException("学号格式有误");
+				}
+				
+				long id=Long.valueOf(idParam);
+				student.setId(id);
+				
+			} catch (NumberFormatException e) {
+				throw new TypeNotMatchException("学号格式有误");
+			}
+		}
+		
+		if(nameParam!=null&&!nameParam.equals("")) {
+			student.setName(nameParam);
+		}
+		
+		if(sexParam!=null&&!sexParam.equals("")) {
+			try {
+				Byte sex=Byte.valueOf(sexParam);
+				
+				if(sex==1||sex==0) {
+					student.setSex(sex);
+				}
+				//如果不为0或1则默认为空
+				
+			} catch (NumberFormatException e) {
+				throw new TypeNotMatchException("性别格式有误");
+			}
+		}
+		
+		if(telParam!=null&&!telParam.equals("")) {
+			try {
+				
+				if(!Pattern.matches(Constant.SEARCH_TEL_REGEX, telParam)) {
+					throw new TypeNotMatchException("手机号格式有误");
+				}
+				
+				Long tel=Long.valueOf(telParam);
+				student.setTel(tel);
+				
+			} catch (NumberFormatException e) {
+				throw new TypeNotMatchException("手机号格式有误");
+			}
+		}
+		
+		if(emailParam!=null&&!emailParam.equals("")) {
+			
+			student.setEmail(emailParam);
+		}
+		
+		return student;
+		
+	}
 }

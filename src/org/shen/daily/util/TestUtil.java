@@ -20,11 +20,11 @@ public class TestUtil {
 		BufferedWriter bw=new BufferedWriter(osw);
 		
 		for (int i = 1; i < 100; i++) {
-			long id=(long)(i);
+			long id=(long)(i+2016220101001L);
 			String name="ÐÕÃû"+i;
 			byte sex=(byte) (i%2==0?1:0);
-			long tel=(long) (i);
-			String email="ÓÊÏä"+i;
+			long tel=(long) (15181517501L+i);
+			String email="youxiang"+i+"@email.com";
 			
 			String sql="INSERT student_ VALUES(id,'name',sex,tel,'email');";
 			

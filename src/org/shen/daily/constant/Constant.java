@@ -6,4 +6,6 @@ public interface Constant {
 	public static final String TEL_REGEX="^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\\d{8}$";
 	public static final String EMAIL_REGEX="^\\w+@\\w+\\.\\w+$";
 	public static final String ID_REGEX="^[1-9][0-9]{12}$";
+	public static final String SEARCH_TEL_REGEX="^\\d${1,11}";
+	public static final String SEARCH_ID_REGEX="^\\d{1,13}$";
 }
