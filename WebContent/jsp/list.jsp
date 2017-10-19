@@ -50,17 +50,11 @@
 			$("#deleteId").val(id);
 			$("#dcurrentPage").val(currentPage);
 			$("#dpageSize").val(pageSize);
-			var id=$("#id").val();
-			$("#dId").val(id);
-			var name=$("#name").val();
-			$("#dName").val(name);
-			var sex=$("#sex").val();
-			$("#dSex").val(sex);
-			var tel=$("#tel").val();
-			$("#dTel").val(tel);
-			var email=$("#email").val();
-			
-			$("#dEmail").val(email);
+			$("#dId").val($("#id").val());
+			$("#dName").val($("#name").val());
+			$("#dSex").val($("#sex").val());
+			$("#dTel").val($("#tel").val());
+			$("#dEmail").val($("#email").val());
 			deleteForm.submit();
 		}
 	}
@@ -79,7 +73,7 @@
 	<input type="hidden" id="dcurrentPage" name="currentPage">
 	<input type="hidden" id="dpageSize" name="pageSize">
 	<input type="hidden" id="dId" name="id">
-	<input type="hidden" id="dMame" name="name">
+	<input type="hidden" id="dName" name="name">
 	<input type="hidden" id="dSex" name="sex">
 	<input type="hidden" id="dTel" name="tel">
 	<input type="hidden" id="dEmail" name="email">
