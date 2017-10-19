@@ -50,11 +50,17 @@
 			$("#deleteId").val(id);
 			$("#dcurrentPage").val(currentPage);
 			$("#dpageSize").val(pageSize);
-			$("#dId").val($("#id").val());
-			$("#dName").val($("#name").val());
-			$("#dSex").val($("#sex").val());
-			$("#dTel").val($("#tel").val());
-			$("#dEmail").val($("#email").val());
+			var id=$("#id").val();
+			$("#dId").val(id);
+			var name=$("#name").val();
+			$("#dName").val(name);
+			var sex=$("#sex").val();
+			$("#dSex").val(sex);
+			var tel=$("#tel").val();
+			$("#dTel").val(tel);
+			var email=$("#email").val();
+			
+			$("#dEmail").val(email);
 			deleteForm.submit();
 		}
 	}
@@ -99,8 +105,8 @@
 		<!-- 表格体 -->
 		<tbody>
 			<tr id="searchRow">
-				<td><input class="form-control" type="text" id="id" name="id" value="${id}"/></td>
-				<td><input class="form-control" type="text" id="name" name="name" value="${name}"/></td>
+				<td><input class="form-control" type="text" id="id" name="id" value="${requestScope.id}"/></td>
+				<td><input class="form-control" type="text" id="name" name="name" value="${requestScope.name}"/></td>
 				<td>
 				<select class="form-control" id="sex" name="sex">
 					<c:choose>
@@ -124,8 +130,8 @@
 					
 				</select>
 				</td>
-				<td><input class="form-control" type="text" id="tel" name="tel" value="${tel}"/></td>
-				<td><input class="form-control" type="text" id="name" name="email" value="${email}"/></td>
+				<td><input class="form-control" type="text" id="tel" name="tel" value="${requestScope.tel}"/></td>
+				<td><input class="form-control" type="text" id="email" name="email" value="${requestScope.email}"/></td>
 				<td>
 					<button type="submit" class="btn btn-default">搜索</button>
 				</td>
@@ -165,6 +171,8 @@
 		<li onclick="search(${result.data.pageNum},${result.data.pageSize})"><a href="#">尾页</a></li>
 	</ul>
 </c:if>
+
+
 <form id="getForm" action="<%=basePath%>/student" method="get">
 	<input type="hidden" name="id">
 </form>
